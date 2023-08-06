@@ -1,0 +1,11 @@
+{
+  "name": "devops-files-frontend-kubernetes",
+  "version": "1.0.0",
+  "description": "frontend files need to deploy your repo directly to kubernets through digitalocean",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nilamadhab",
+  "license": "ISC"
+}
