@@ -2,6 +2,10 @@
   "name": "devops-files-frontend-kubernetes",
   "version": "1.0.0",
   "description": "A custom package containing deployment, ingress, and issuers files.",
+  "main": "index.js",
+  "scripts": {
+    "install": "node install.js"
+  },
   "files": [
     "deployment",
     "ingress",
@@ -10,9 +14,6 @@
     ".github",
     "Dockerfile"
   ],
-  "scripts": {
-    "start": "echo 'Package contents available.'"
-  },
   "author": "nilamadhab",
   "license": "MIT",
   "repository": {
