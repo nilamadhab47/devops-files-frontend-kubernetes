@@ -1,11 +1,26 @@
 {
-  "name": "devops-files-frontend-kubernetes",
+  "name": "my-package",
   "version": "1.0.0",
-  "description": "frontend files need to deploy your repo directly to kubernets through digitalocean",
-  "main": "index.js",
+  "description": "A custom package containing deployment, ingress, and issuers files.",
+  "files": [
+    "deployment",
+    "ingress",
+    "issuers",
+    "services",
+    ".github",
+    "Dockerfile"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "echo 'Package contents available.'"
   },
   "author": "nilamadhab",
-  "license": "ISC"
+  "license": "MIT",
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/nilamadhab47/devops-files-frontend-kubernetes.git"
+},
+  "bugs": {
+    "url": "https://github.com/nilamadhab47/devops-files-frontend-kubernetes/issues"
+  },
+  "homepage": "https://github.com/nilamadhab47/devops-files-frontend-kubernetes#readme"
 }
