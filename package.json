@@ -1,5 +1,5 @@
 {
-  "name": "my-package",
+  "name": "devops-files-frontend-kubernetes",
   "version": "1.0.0",
   "description": "A custom package containing deployment, ingress, and issuers files.",
   "files": [
