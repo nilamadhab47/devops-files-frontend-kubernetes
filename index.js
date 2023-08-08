@@ -1,27 +1,19 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 
-const sourceDir = path.join(__dirname, 'D:\nilamadhab\devops-files-frontend-kubernetes'); // Path to your package's files
+const sourceDirs = ['deployments', 'ingresses', 'issuers', 'services', '.github', 'Dockerfile']; // List of directories to copy
+
 const targetDir = process.cwd(); // Path to the project's directory
 
-function copyFileSync(source, target) {
-  const targetFile = path.join(target, path.basename(source));
-  fs.writeFileSync(targetFile, fs.readFileSync(source));
-}
-
-function copyFolderRecursiveSync(source, target) {
-  const files = fs.readdirSync(source);
-  files.forEach(file => {
-    const sourceFile = path.join(source, file);
-    const targetFile = path.join(target, file);
-    if (fs.statSync(sourceFile).isDirectory()) {
-      fs.mkdirSync(targetFile);
-      copyFolderRecursiveSync(sourceFile, targetFile);
-    } else {
-      copyFileSync(sourceFile, target);
+async function copyFiles() {
+  try {
+    for (const sourceDir of sourceDirs) {
+      await fs.copy(path.join(__dirname, sourceDir), path.join(targetDir, sourceDir));
     }
-  });
+    console.log('Custom files and folders copied successfully.');
+  } catch (err) {
+    console.error('Error copying files:', err);
+  }
 }
-
-copyFolderRecursiveSync(sourceDir, targetDir);
-console.log('Custom files and folders copied successfully.');
+console.log("hiihi")
+copyFiles();

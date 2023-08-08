@@ -7,17 +7,17 @@ metadata:
 spec:
   tls:
     - hosts:
-        - vod-madhav.site
+        - <YOUR_DOMAIN>
       secretName: echo-tls-6m6bq
   rules:
-    - host: vod-madhav.site
+    - host: <YOUR_DOMAIN>
       http:
         paths:
           - pathType: Prefix
             path: "/"
             backend:
               service:
-                name: vod-service
+                name: <NAME_OF_YOUR_SERVICE>
                 port:
                   number: 80
-  ingressClassName: nginx
+  ingressClassName: nginx # MAKE SURE TO INGRESS CLASS NAME IS SAME AS IN KUBERNETES DASHBOARD IF ITS NOT IT WILL NOT PROVIDE YOU WITH EXTERNAL IP

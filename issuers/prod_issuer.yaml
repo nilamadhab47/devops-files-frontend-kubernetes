@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt-prod
+  name: letsencrypt-prod # MAKE SURE THE NAME IS SAME AS IN INGRESS FILE IN CERT-MANAGER
 spec:
   acme:
     # Email address used for ACME registration
@@ -14,4 +14,4 @@ spec:
     solvers:
     - http01:
         ingress:
-          class: nginx
+          class: nginx # MAKE SURE TO INGRESS CLASS NAME IS SAME AS IN KUBERNETES DASHBOARD IF ITS NOT IT WILL NOT PROVIDE YOU WITH EXTERNAL IP

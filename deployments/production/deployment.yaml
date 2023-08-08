@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: vod
+  name: <YOUR_PROJECT_NAME>
 spec:
   selector:
     matchLabels:
-      app: vod
+      app: <YOUR_PROJECT_NAME>
   replicas: 1
   template:
     metadata:
       labels:
-        app: vod
+        app: <YOUR_PROJECT_NAME>
     spec:
       containers:
-        - name: vod
-          image: registry.digitalocean.com/fabs/vod:latest
+        - name: <YOUR_PROJECT_NAME>
+          image: <IMAGE>
           ports:
             - containerPort: 3000
       imagePullSecrets:
-        - name: fabs
+        - name: <YOU_CAN_FIND_THESE_IN_YOUR_CONTAINER_REGISTRY>

@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: vod-service
+  name: <YOUR_PROJECT_NAME>-service
 spec:
   selector:
-    app: vod
+    app: <YOUR_PROJECT_NAME>
   ports:
     - name: http
       port: 80
-      targetPort: 3000
+      targetPort: 3000 # MAKE SURE TO TARGET PORT SHOULD BE SAME AS CONTAINER PORT IN DEPLOYMENT 

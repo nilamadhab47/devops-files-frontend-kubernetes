@@ -58,3 +58,6 @@ ENV PORT 3000
 ENV HOSTNAME localhost
 
 CMD ["node", "server.js"]
+
+# THIS DOCKER FILE CAN BE USED FOR BOTH NEXT JS AND REACT JS 
+# TO RUN DOCKER FILE LOCALLY AND MAKE SURE YOU HAVE INSTALLED THE DOCKER IN YOUR PC : REFER - https://docs.docker.com/engine/reference/commandline/build/ 

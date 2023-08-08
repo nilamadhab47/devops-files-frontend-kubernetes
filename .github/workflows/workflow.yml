@@ -1,3 +1,7 @@
+# REPLACE <YOUR_PROJECT_NAME>
+# MAKE SURE TO REPLACE THE REGISTRY LINK WHICH YOU CAN FIND IN DIGITAL OCEAN CON
+
+
 # Pipeline name
 name: Deploy to DigitalOcean Kubernetes
 
@@ -5,7 +9,7 @@ name: Deploy to DigitalOcean Kubernetes
 on:
   push:
     branches:
-      - IHV-53
+      - main
 
 jobs:
   deploy:
@@ -24,15 +28,19 @@ jobs:
 
       # Step 3: Builds the Docker image and pushes it to your container registry
       - name: Build container image
-        run: docker build -t registry.digitalocean.com/fabs/vod:latest .
+        run: docker build -t <YOUR_CONTAINER_REGISTRY>/<YOUR_PROJECT_NAME>:$(echo $GITHUB_SHA | head -c7) .
 
       - name: Log in to DigitalOcean Container Registry with short-lived credentials
         run: doctl registry login --expiry-seconds 1200
 
       - name: Push image to DigitalOcean Container Registry
-        run: docker push registry.digitalocean.com/fabs/vod:latest
+        run: docker push <YOUR_CONTAINER_REGISTRY>/<YOUR_PROJECT_NAME>:$(echo $GITHUB_SHA | head -c7)
 
-      # Step 4: Deploys to k8s
+      # Step 4: Update deployment file with latest commit tag
+      - name: Update deployment file
+        run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|<YOUR_CONTAINER_REGISTRY>/<YOUR_PROJECT_NAME>:'${TAG}'|' $GITHUB_WORKSPACE/deployments/production/deployment.yaml
+
+      # Step 5: Deploys to k8s
       - name: Save DigitalOcean kubeconfig with short-lived credentials
         run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 k8s-fabs
 
